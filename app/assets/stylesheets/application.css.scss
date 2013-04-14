@@ -1,0 +1,149 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require reset
+ *= require screen
+ *= require_self
+ */
+
+@import 'bourbon';
+@import 'neat';
+
+.mainHeader {
+  padding: 10px;
+  color: white;
+  font-size: 0.8em;
+  a {
+    color: #eee;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  text-align: right;
+  background: black;
+  @inlude box-shadow(0 4px 4px -2px #ddd);
+}
+
+.clearance-sessions, .clearance-users, .clearance-passwords  {
+  form {
+    padding: 30px;
+  }
+  p {
+    padding-bottom: 10px;
+  }
+  h2 {
+    background-color: black;
+    padding: 10px;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+  }
+  .sessionActions {
+    padding: 0px 30px 30px;
+  }
+  .content {
+    @include box-shadow(0 0 8px 5px #ddd);
+    margin: 0 auto;
+    margin-top: 150px;
+    width: 400px;
+    background-color: #0081C4;
+    label {
+      display: block;
+    }
+    color: white;
+    
+    a {
+      color: white;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.field, .text_field, .password_field {
+  margin-bottom: 8px;
+  label {
+    margin-bottom: 4px;
+  }
+}
+
+.pageHeader {
+  background-color: #0081C4;
+  padding: 10px;
+  color: white;
+}
+
+.feedForm {
+  padding: 10px;
+}
+
+input[type="submit"] {
+  @include button(shiny, #4aa329);
+}
+
+.addFeed a {
+  margin: 10px;
+  @include button(shiny, #ff0000);
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.feedItem {
+  &:hover {
+    background-color: #eee;
+  }
+  padding-bottom: 15px;
+  header {
+    font-weight: bold;
+    border-left: 5px solid #222;
+    padding: 10px 10px 5px;
+    a{
+      color: #333;
+    }
+    .pubDate {
+      float: right;
+      font-size: 0.7em;
+    }
+  }
+  .feedContent {
+    padding: 5px 5px 5px 15px;
+    font-size: 0.85em;
+    color: #888;
+  }
+}
+
+.feedList {
+  width: 100%;
+  th {
+    color: white;
+    @include linear-gradient(#0081C4, #0081CA);
+  }
+  td, th {
+    border: 1px solid grey;
+    padding: 5px;
+    text-align: left;
+  }
+}
+
+

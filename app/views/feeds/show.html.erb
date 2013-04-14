@@ -1,0 +1,21 @@
+<section class="feed">
+  <div class="feedName pageHeader">
+    <h1><%= @feed.name %></h1>
+    <%= link_to 'Edit', edit_feed_path(@feed) %>
+  </div>
+  <div class="feedItemContainer">
+    <div class="feedItems">
+      <% @feed.feed.items.each do |item| %>
+        <article class="feedItem">
+          <header class="feedItemName">
+            <a href="<%= item.link %>" target="_blank" class="viewOriginal"><%= item.title %></a>
+            <span class="pubDate"><%= distance_of_time_in_words(item.pubDate, Time.now) %> ago</span>
+          </header>
+          <div class="feedContent">
+            <p><%= strip_tags(item.description) %></p>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
