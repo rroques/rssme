@@ -1,11 +1,14 @@
 class FeedsController < ApplicationController
 
   before_filter :authorize
+
+  before_filter :find_feed_for_current_user,   only: [:destroy, :edit, :update, :show]
+
   
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
+    @feeds = current_user.feeds.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +19,6 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-    @feed = Feed.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +29,7 @@ class FeedsController < ApplicationController
   # GET /feeds/new
   # GET /feeds/new.json
   def new
-    @feed = Feed.new
+    @feed = current_user.feeds.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +45,7 @@ class FeedsController < ApplicationController
   # POST /feeds
   # POST /feeds.json
   def create
-    @feed = Feed.new(params[:feed])
+    @feed = current_user.feeds.new(params[:feed])
 
     respond_to do |format|
       if @feed.save
@@ -59,7 +61,6 @@ class FeedsController < ApplicationController
   # PUT /feeds/1
   # PUT /feeds/1.json
   def update
-    @feed = Feed.find(params[:id])
 
     respond_to do |format|
       if @feed.update_attributes(params[:feed])
@@ -75,7 +76,6 @@ class FeedsController < ApplicationController
   # DELETE /feeds/1
   # DELETE /feeds/1.json
   def destroy
-    @feed = Feed.find(params[:id])
     @feed.destroy
 
     respond_to do |format|
@@ -83,4 +83,11 @@ class FeedsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def find_feed_for_current_user
+      @feed = current_user.feeds.find_by_id(params[:id])
+      redirect_to root_url if @feed.nil?
+    end
 end

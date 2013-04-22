@@ -5,16 +5,20 @@
   </div>
   <div class="feedItemContainer">
     <div class="feedItems">
-      <% @feed.feed.items.each do |item| %>
-        <article class="feedItem">
-          <header class="feedItemName">
-            <a href="<%= item.link %>" target="_blank" class="viewOriginal"><%= item.title %></a>
-            <span class="pubDate"><%= distance_of_time_in_words(item.pubDate, Time.now) %> ago</span>
-          </header>
-          <div class="feedContent">
-            <p><%= strip_tags(item.description) %></p>
-          </div>
-        </article>
+      <% if @feed.feed == nil %>
+        Could not load the feed items, please check the url.
+      <% else %>
+        <% @feed.feed.items.each do |item| %>
+          <article class="feedItem">
+            <header class="feedItemName">
+              <a href="<%= item.link %>" target="_blank" class="viewOriginal"><%= item.title %></a>
+              <span class="pubDate"><%= distance_of_time_in_words(item.pubDate, Time.now) %> ago</span>
+            </header>
+            <div class="feedContent">
+              <p><%= strip_tags(item.description) %></p>
+            </div>
+          </article>
+        <% end %>
       <% end %>
     </div>
   </div>

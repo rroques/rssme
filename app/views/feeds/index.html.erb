@@ -7,23 +7,26 @@
 </div>
 
 <table class="feedList">
-  <tr>
-    <th>Name</th>
-    <th>Url</th>
-    <th colspan="3">Manage</th>
-  </tr>
-
-<% @feeds.each do |feed| %>
-  <tr>
-    <td><%= feed.name %></td>
-    <td><%= feed.url %></td>
-    <td>
-      <%= link_to 'Show', feed %>
-      / <%= link_to 'Edit', edit_feed_path(feed) %>
-      / <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
-  </tr>
-<% end %>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th colspan="3">Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @feeds.each do |feed| %>
+    <tr>
+      <td><%= feed.name %></td>
+      <td><%= feed.url %></td>
+      <td>
+          <%= link_to 'Show', feed, :remote => true %>
+        / <%= link_to 'Edit', edit_feed_path(feed) %>
+        / <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
 
 <br />

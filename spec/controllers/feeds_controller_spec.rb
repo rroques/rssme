@@ -36,7 +36,7 @@ describe FeedsController do
 
   before(:each) do 
     @feed = FactoryGirl.create(:feed)
-    sign_in
+    sign_in_as @feed.user
   end  
 
   describe "GET index" do
@@ -51,6 +51,12 @@ describe FeedsController do
       get :show, {:id => @feed.to_param}, valid_session
       assigns(:feed).should eq(@feed)
     end
+
+    it "redirect to root_url if current user" do
+      sign_in_as FactoryGirl.create(:user)
+      get :show, {:id => @feed.to_param}, valid_session
+      response.should redirect_to(root_url)
+    end  
   end
 
   describe "GET new" do
@@ -65,6 +71,12 @@ describe FeedsController do
       get :edit, {:id => @feed.to_param}, valid_session
       assigns(:feed).should eq(@feed)
     end
+
+    it "redirect to root_url if current user" do
+      sign_in_as FactoryGirl.create(:user)
+      get :edit, {:id => @feed.to_param}, valid_session
+      response.should redirect_to(root_url)
+    end  
   end
 
   describe "POST create" do
@@ -102,6 +114,7 @@ describe FeedsController do
         response.should render_template("new")
       end
     end
+
   end
 
   describe "PUT update" do
@@ -124,6 +137,12 @@ describe FeedsController do
         put :update, {:id => @feed.to_param, :feed => valid_attributes}, valid_session
         response.should redirect_to(@feed)
       end
+
+      it "redirect to root_url if current user" do
+        sign_in_as FactoryGirl.create(:user)
+        put :update, {:id => @feed.to_param, :feed => valid_attributes}, valid_session
+        response.should redirect_to(root_url)
+      end 
     end
 
     describe "with invalid params" do
@@ -154,6 +173,12 @@ describe FeedsController do
       delete :destroy, {:id => @feed.to_param}, valid_session
       response.should redirect_to(feeds_url)
     end
+
+    it "redirect to root_url if current user" do
+      sign_in_as FactoryGirl.create(:user)
+      delete :destroy, {:id => @feed.to_param}, valid_session
+      response.should redirect_to(root_url)
+    end 
   end
 
 end
