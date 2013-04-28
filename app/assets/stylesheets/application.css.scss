@@ -115,10 +115,16 @@ a {
     background-color: #eee;
   }
   padding-bottom: 15px;
+  .feedItemContainer {
+     border-left: 5px solid #222;
+  }
+  .enclosureContainer {
+    float: left;
+  }
   header {
+    float: left;
     font-weight: bold;
-    border-left: 5px solid #222;
-    padding: 10px 10px 5px;
+    padding: 10px;
     a{
       color: #333;
       font-weight: bold;
@@ -132,6 +138,7 @@ a {
     padding: 5px 5px 5px 15px;
     font-size: 0.85em;
     color: #888;
+    float: left;
   }
 }
 
@@ -189,4 +196,9 @@ a {
 .feedActions {
   float: right;
   font-size: 0.7em;
+}
+
+.enclosure {
+  max-width: 70px;
+  max-height: 70px;
 }

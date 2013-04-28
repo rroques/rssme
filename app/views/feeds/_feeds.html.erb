@@ -2,8 +2,12 @@
   <% if @feed.feed == nil %>
   Could not load the feed items, please check the url.
   <% else %>
-    <% @feed.feed.items.each do |item| %>
-    <article class="feedItem">
+  <% @feed.feed.items.each do |item| %>
+  <article class="feedItem">
+    <div class="feedItemContainer">
+      <div class="enclosureContainer">
+        <img class="enclosure" src="<%= item.enclosure.url %>"></img>
+      </div>
       <header class="feedItemName">
         <a href="<%= item.link %>" target="_blank" class="viewOriginal"><%= item.title %></a>
         <span class="pubDate"><%= distance_of_time_in_words(item.pubDate, Time.now) %> ago</span>
@@ -11,7 +15,8 @@
       <div class="feedContent">
         <p><%= strip_tags(item.description) %></p>
       </div>
-    </article>
-    <% end %>
+    </div>
+  </article>
+  <% end %>
   <% end %>
 </div>

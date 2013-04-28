@@ -33,7 +33,7 @@ gem 'flutie'
 gem 'bourbon'
 gem 'airbrake'
 gem 'neat'
-
+gem 'spinjs-rails'
 
 group :development do
   gem 'foreman'

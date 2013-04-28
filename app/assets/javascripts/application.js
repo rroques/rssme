@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.spin
 //= require_directory .
 //= require_directory ./feeds
