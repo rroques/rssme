@@ -2,3 +2,7 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 run Rssme::Application
+
+require 'resque_scheduler'
+require 'resque/scheduler'
+require 'resque_scheduler/server'

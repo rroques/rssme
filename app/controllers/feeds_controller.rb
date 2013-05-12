@@ -19,9 +19,10 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-
+    @feed = Feed.find(params[:id])
+    
     respond_to do |format|
-      format.html # show.html.erb
+      # format.html # show.html.erb
       format.js
       format.json { render json: @feed }
     end
@@ -50,7 +51,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.html { redirect_to feeds_url, notice: 'Feed was successfully created.' }
         format.json { render json: @feed, status: :created, location: @feed }
       else
         format.html { render action: "new" }
@@ -65,7 +66,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.update_attributes(params[:feed])
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to feeds_url , notice: 'Feed was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

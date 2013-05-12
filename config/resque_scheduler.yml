@@ -1,0 +1,7 @@
+load_feed_item:
+  every: 15m
+  args: 
+  class: LoadFeedItem
+  queue: load_feed_item
+  description: Tasks to load new items periodically
+  rails_envs: development, production, staging

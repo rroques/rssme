@@ -17,8 +17,10 @@
 @import 'neat_variables';
 @import 'neat';
 
+$spacing: 10px;
+
 .mainHeader {
-  padding: 10px;
+  padding: $spacing;
   color: white;
   font-size: 0.8em;
   a {
@@ -38,11 +40,11 @@
     padding: 30px;
   }
   p {
-    padding-bottom: 10px;
+    padding-bottom: $spacing;
   }
   h2 {
     background-color: black;
-    padding: 10px;
+    padding: $spacing;
   }
   input {
     width: 100%;
@@ -86,21 +88,21 @@ h1 {
 
 .pageHeader {
   background-color: #0081C4;
-  padding: 10px;
+  padding: $spacing;
   color: white;
 }
 
 .feedForm {
-  padding: 10px;
+  padding: $spacing;
 }
 
 input[type="submit"] {
-  @include button(shiny, #4aa329);
+  @include button(simple, #38ab2c);
 }
 
 .addFeed a {
-  margin: 10px;
-  @include button(shiny, #ff0000);
+  margin: $spacing;
+  @include button(simple, #d14836);
 }
 
 a {
@@ -114,31 +116,31 @@ a {
   &:hover {
     background-color: #eee;
   }
-  padding-bottom: 15px;
+  &.read {
+    background: #dedede;
+  }
+  background: white;
+  border-bottom: 1px solid #888;
+  border-left: 1px solid #ddd;
   .feedItemContainer {
      border-left: 5px solid #222;
   }
-  .enclosureContainer {
-    float: left;
-  }
+  
   header {
-    float: left;
     font-weight: bold;
-    padding: 10px;
+    padding: $spacing;
     a{
       color: #333;
-      font-weight: bold;
     }
     .pubDate {
-      float: right;
       font-size: 0.7em;
+      float: right;
     }
   }
   .feedContent {
-    padding: 5px 5px 5px 15px;
+    padding: 5px 0px 15px 15px;
     font-size: 0.85em;
     color: #888;
-    float: left;
   }
 }
 
@@ -159,15 +161,15 @@ a {
 #feedsWrapper {
   @include outer-container;
   #feedNames {
-    @include span-columns(4);
+    @include span-columns(3);
   }
   #feedContainer {
-    @include span-columns(8);
+    @include span-columns(9);
   }
 }
 
 .feedName {
-  padding: 10px;
+  padding: $spacing;
   border-bottom: 1px solid #eee;
   a, a:visited, a:hover, a:active {
     color: #888;
@@ -194,11 +196,17 @@ a {
 }
 
 .feedActions {
-  float: right;
   font-size: 0.7em;
+  float: right;
 }
 
 .enclosure {
   max-width: 70px;
   max-height: 70px;
+  float: left;
+  margin-right: $spacing;
+}
+
+.hidey {
+  display: none;
 }

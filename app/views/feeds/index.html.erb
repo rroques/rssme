@@ -4,20 +4,22 @@
 
 <div class="addFeed">
   <%= link_to 'Add a new Feed', new_feed_path %>
+
+  <span id="spinner"></span>
 </div>
 
 <div class="feedsContainer">
   <div id="feedsWrapper">
     <div id="feedNames">  
       <% @feeds.each do |feed| %>
-      <div class="feedName">
-        <%= link_to feed.name, feed, :remote => true, :class => 'linkToFeed' %>
+        <div class="feedName">
+          <%= link_to feed.name, feed, :remote => true, :class => 'linkToFeed' %>
 
-        <div class="feedActions">
-          <%= link_to 'Edit', edit_feed_path(feed) %> - 
-          <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="feedActions">
+            <%= link_to 'Edit', edit_feed_path(feed) %> - 
+            <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         </div>
-      </div>
       <% end %>
     </div>
     <div id="feedContainer"></div>

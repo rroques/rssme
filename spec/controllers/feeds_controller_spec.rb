@@ -95,7 +95,7 @@ describe FeedsController do
 
       it "redirects to the created feed" do
         post :create, {:feed => valid_attributes}, valid_session
-        response.should redirect_to(Feed.last)
+        response.should redirect_to(feeds_url)
       end
     end
 
@@ -135,7 +135,7 @@ describe FeedsController do
 
       it "redirects to the feed" do
         put :update, {:id => @feed.to_param, :feed => valid_attributes}, valid_session
-        response.should redirect_to(@feed)
+        response.should redirect_to(feeds_url)
       end
 
       it "redirect to root_url if current user" do

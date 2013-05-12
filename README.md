@@ -1,9 +1,8 @@
-You look great in Suspenders
-============================
+RSSME
+=====
 
-Use the following guides for getting things done, programming well, and
-programming in style.
+RSSME is an RSS aggregator. It has been developed as a home project to get my hands dirty with Rails.
 
-* [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
-* [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
+It uses:
+* Rails and postgres for the web app
+* resque and redis for the back-end RSS caching

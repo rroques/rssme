@@ -1,22 +1,45 @@
 <div class="feedItems">
-  <% if @feed.feed == nil %>
+  <% if @feed.items.empty? %>
   Could not load the feed items, please check the url.
   <% else %>
-  <% @feed.feed.items.each do |item| %>
-  <article class="feedItem">
-    <div class="feedItemContainer">
-      <div class="enclosureContainer">
-        <img class="enclosure" src="<%= item.enclosure.url %>"></img>
-      </div>
-      <header class="feedItemName">
-        <a href="<%= item.link %>" target="_blank" class="viewOriginal"><%= item.title %></a>
-        <span class="pubDate"><%= distance_of_time_in_words(item.pubDate, Time.now) %> ago</span>
-      </header>
-      <div class="feedContent">
-        <p><%= strip_tags(item.description) %></p>
-      </div>
+  <% @feed.items_to_show.each do |item| %>
+  <article class="feedItem <%= item_class(@feed, item) %>" id="feedItem_<%= item.id %>">
+    <header class="feedItemName">
+      <a href="<%= item_link(item) %>" target="_blank" class="viewOriginal"><%= item.title %></a>
+      <span class="pubDate"><%= distance_of_time_in_words(item_pub_date(item), Time.now) %> ago</span>
+    </header>
+    <div class="feedContent hidey">
+
     </div>
+
+    <script>
+
+    // TODO should be one script per page and analyze bubbled events but that will do for the moment
+
+    $('#feedItem_<%= item.id %>').click(function(){
+      var article = $(this);
+      article.find('.feedContent').toggle(0);
+      $.ajax({
+        type: 'GET',
+        url: '<%= item_path(item.id ) %>',
+        async: true
+      });
+      if (!article.is('.read')) {
+        $.ajax({
+          type: 'POST',
+          url: '<%= item_read_items_path(item.id ) %>',
+          data: { 'read_item[item_id]' : '<%= item.id %>', 'read_item[feed_id]': '<%= @feed.id %>'},
+          async: true,
+          success: function(){ 
+            article.addClass('read'); 
+          }
+        });
+      }
+    });
+    </script>
+
   </article>
+
   <% end %>
   <% end %>
 </div>

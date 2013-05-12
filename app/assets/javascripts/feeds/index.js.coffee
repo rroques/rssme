@@ -1,6 +1,9 @@
 window.RSSME.feeds.index = ->
+
+  feedNames = $('#feedNames').find('.feedName')
   $('.feedName').click ->
-    $('#feedNames').find('.feedName').removeClass('selected')
+    feedNames.removeClass('selected')
     $(this).addClass('selected')
-    $(this).next().spin('small')
+    
+  feedNames.find('.linkToFeed:first').click()
     

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.2'
+ruby '1.9.3'
 
 gem 'rails', '3.2.8'
 
@@ -34,6 +34,11 @@ gem 'bourbon'
 gem 'airbrake'
 gem 'neat'
 gem 'spinjs-rails'
+
+gem 'resque', :require => 'resque/server' 
+gem 'resque-scheduler', :require => 'resque_scheduler'
+
+gem 'underscore-rails'
 
 group :development do
   gem 'foreman'

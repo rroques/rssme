@@ -14,5 +14,8 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.spin
+//= require underscore
 //= require_directory .
 //= require_directory ./feeds
+
+window.Inline = window.Inline || {};
