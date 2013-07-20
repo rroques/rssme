@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  before_filter :authorize
+
   def show
     @item = Item.find(params[:id])
     

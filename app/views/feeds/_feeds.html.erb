@@ -1,6 +1,6 @@
 <div class="feedItems">
   <% if @feed.items.empty? %>
-  Could not load the feed items, please check the url.
+    There are no items to display. 
   <% else %>
   <% @feed.items_to_show.each do |item| %>
   <article class="feedItem <%= item_class(@feed, item) %>" id="feedItem_<%= item.id %>">

@@ -4,5 +4,13 @@ FactoryGirl.define do |n|
     name 'feed name'
     url 'http://feed.com/rss/index.rss' 
     user
-  end  	  
+  end  
+
+  factory :item do 
+    title 'item name'
+    content 'http://feed.com/rss/index.rss' 
+    pub_date DateTime.now
+    feed
+  end  
+
 end

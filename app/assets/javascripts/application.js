@@ -16,6 +16,8 @@
 //= require jquery.spin
 //= require underscore
 //= require_directory .
+//= require js-routes
 //= require_directory ./feeds
+//= require_directory ./google_reader_imports
 
 window.Inline = window.Inline || {};

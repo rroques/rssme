@@ -1,10 +1,9 @@
 Rssme::Application.routes.draw do
   
-
-  resources :items do
-    resources :read_items
-  end  
-
+  scope :constraints => { :id => /\d+/ } do
+    resources :items, only: :show
+  end
+  resources :read_items, only: :create
   resources :feeds
 
   root :to => 'feeds#index'

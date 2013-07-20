@@ -13,11 +13,25 @@
  *= require_self
  */
 
-@import 'bourbon';
-@import 'neat_variables';
-@import 'neat';
+ @import 'bourbon';
+ @import 'neat_variables';
+ @import 'neat';
 
-$spacing: 10px;
+ $spacing: 10px;
+
+ @mixin rss-button($colour) {
+  margin: 10px;
+  border: 1px solid darken($colour, 5);
+  color: white;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: $colour;
+  padding: 7px 18px;
+  text-decoration: none;
+  text-shadow: 0 1px 0  darken($colour, 5);
+  background-clip: padding-box;
+}
 
 .mainHeader {
   padding: $spacing;
@@ -102,8 +116,10 @@ input[type="submit"] {
 
 .addFeed a {
   margin: $spacing;
-  @include button(simple, #d14836);
+  @include rss-button(#d14836);
 }
+
+
 
 a {
   text-decoration: none;
@@ -120,28 +136,27 @@ a {
     background: #dedede;
   }
   background: white;
-  border-bottom: 1px solid #888;
-  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
   .feedItemContainer {
-     border-left: 5px solid #222;
+   border-left: 5px solid #222;
+ }
+
+ header {
+  font-weight: bold;
+  padding: $spacing;
+  a{
+    color: #333;
   }
-  
-  header {
-    font-weight: bold;
-    padding: $spacing;
-    a{
-      color: #333;
-    }
-    .pubDate {
-      font-size: 0.7em;
-      float: right;
-    }
+  .pubDate {
+    font-size: 0.7em;
+    float: right;
   }
-  .feedContent {
-    padding: 5px 0px 15px 15px;
-    font-size: 0.85em;
-    color: #888;
-  }
+}
+.feedContent {
+  padding: 5px 0px 15px 15px;
+  font-size: 0.85em;
+  color: #888;
+}
 }
 
 .feedList {
@@ -170,7 +185,7 @@ a {
 
 .feedName {
   padding: $spacing;
-  border-bottom: 1px solid #eee;
+  border-left: 10px solid #bbb;
   a, a:visited, a:hover, a:active {
     color: #888;
     text-decoration: none;
@@ -178,9 +193,13 @@ a {
   a:hover {
     text-decoration: underline;
   }
-  &.selected .linkToFeed {
-    color: #0081C4;
-    font-weight: bold;
+  &.selected {
+    border-left: 15px solid #0081C4;
+    .linkToFeed {
+      color: #0081C4;
+
+      font-weight: bold;
+    }
   }
   .feedActions {
     display: none;
@@ -191,9 +210,6 @@ a {
   display: block;
 }
 
-.feedsContainer {
-  border-top: 1px solid #333;
-}
 
 .feedActions {
   font-size: 0.7em;
@@ -209,4 +225,20 @@ a {
 
 .hidey {
   display: none;
+}
+
+#drag-file {
+  height: 300px;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: $spacing;
+  border: 10px dashed red;
+  background-color: #ddd;
+  &.hover{
+    border: 10px dashed green;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
 }

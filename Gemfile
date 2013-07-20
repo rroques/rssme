@@ -34,6 +34,8 @@ gem 'bourbon'
 gem 'airbrake'
 gem 'neat'
 gem 'spinjs-rails'
+gem 'js-routes'
+gem 'nokogiri'
 
 gem 'resque', :require => 'resque/server' 
 gem 'resque-scheduler', :require => 'resque_scheduler'

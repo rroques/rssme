@@ -1,0 +1,35 @@
+window.RSSME.google_reader_imports.new = ->
+
+  id = 0
+
+  readFile = (f) ->
+    reader = new FileReader();
+    reader.onloadend = (e) ->
+      txtArea = this.result
+      $.ajax({
+        type: 'POST',
+        url: Routes.google_reader_imports_path(),
+        data: { 'google_reader_import[file]' : txtArea },
+        async: true,      
+        success: =>
+          $("##{newFileUploadId}").html("Uploaded #{file.name} - Done!")
+        
+      })
+    reader.readAsText(f)
+
+  $('#drag-file').bind "dragcenter,dragover", (e) ->
+    e.stopPropagation()
+    e.preventDefault()
+    $(this).addClass 'hover'
+
+  $('#drag-file').bind "drop", (e) ->
+    e.stopPropagation()
+    e.preventDefault()
+    
+    files = e.originalEvent.files || e.originalEvent.dataTransfer.files
+    for file in files
+      newFileUploadId = "updaloding_#{id++}"
+      newFile = "<div id='#{newFileUploadId}'>Uploading #{file.name}</div>"
+      $('#upLoadStatus').append(newFile);
+      readFile file
+      

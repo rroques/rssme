@@ -2,7 +2,7 @@ require 'rss'
 require 'open-uri'
 
 class Feed < ActiveRecord::Base
-  attr_accessible :name, :url
+  attr_accessible :name, :url, :items
   validates :name, :url, :presence => true
   validates_format_of :url, :with => URI::regexp(%w(http https rss))
 

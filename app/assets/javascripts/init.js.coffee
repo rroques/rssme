@@ -1,6 +1,7 @@
 window.RSSME = {}
 RSSME = window.RSSME
 RSSME.feeds = {}
+RSSME.google_reader_imports = {}
 
 UTIL = {
   exec: ( controller, action ) -> 
