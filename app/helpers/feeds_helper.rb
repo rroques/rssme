@@ -20,4 +20,10 @@ module FeedsHelper
       'read' 
     end
   end 
+
+  def number_unread_items(feed)
+    unread_cound = feed.items.size - feed.read_items.size
+    if unread_cound > 0 then "(#{unread_cound})" else "" end
+  end
+
 end  

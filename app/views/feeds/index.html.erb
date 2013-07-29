@@ -1,9 +1,10 @@
 <div class="pageHeader">
   <h1>My feeds</h1>
 </div>
-
-<div class="addFeed">
-  <%= link_to 'Add a new Feed', new_feed_path %>
+<div class="headerButtonContainer">
+  <div class="feedActionButtonWrapper">
+    <%= link_to 'Add a new Feed', new_feed_path %>
+  </div>
 </div>
 
 <div class="feedsContainer">
@@ -11,12 +12,10 @@
     <div id="feedNames">  
       <% @feeds.each do |feed| %>
         <div class="feedName">
+          <input type="hidden" class="feedID" value="<%= feed.id %>">
           <%= link_to feed.name, feed, :remote => true, :class => 'linkToFeed' %>
-
-          <div class="feedActions">
-            <%= link_to 'Edit', edit_feed_path(feed) %> - 
-            <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
+          <%= number_unread_items(feed)%>
+          
         </div>
       <% end %>
     </div>

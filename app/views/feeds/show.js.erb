@@ -1,28 +1,4 @@
-var items = [
-  <% @feed.items.order('created_at DESC').each do |item| %>
-    <%= item.content.html_safe %>
-    <% if @feed.items.order('created_at DESC').last != item %>
-      , 
-    <% end %>
-  <% end %>
-];
-
-_.templateSettings = {
-    interpolate: /\{\{\=(.+?)\}\}/g,
-    evaluate: /\{\{(.+?)\}\}/g
-};
-
-
-var list = " {{ _.each(items, function(item) { }} \
-<article class=\"feedItem\"> \
-  <header class=\"feedItemName\"> \
-    <a href=\"{{= item.link }}\" target=\"_blank\" class=\"viewOriginal\">{{= item.title }}</a> \
-    <span class=\"pubDate\">{{= item.pubDate }} ago</span> \
-  </header> \
-</article> \
-{{ }); }} ";
-
-var html = _.template(list, items);
 $('#feedContainer').html('<%= escape_javascript(render "feeds") %>');
+
 
 

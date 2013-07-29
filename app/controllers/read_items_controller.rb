@@ -9,10 +9,10 @@ class ReadItemsController < ApplicationController
     existing_item = ReadItem.find_by_item_id_and_feed_id(params[:read_item][:item_id], params[:read_item][:feed_id])
     respond_to do |format|
       if existing_item != nil
-        format.json { render json: existing_item, status: 409 }
+        format.json { render json: existing_item, status: :ok }
       elsif  @read_item.save
-        format.json { render :nothing => true, status: :created }
-        format.html { render :nothing => true, status: :created }
+        format.json { render json: @read_item, status: :ok }
+        format.html { render json: @read_item, status: :ok }
       else
         format.json { render json: @read_item.errors, status: :unprocessable_entity }
       end

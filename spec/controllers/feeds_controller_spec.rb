@@ -93,6 +93,18 @@ describe FeedsController do
 
   end
 
+  describe "POST markAllRead" do
+    describe "with valid params" do
+      it "creates a new Feed" do
+        item = FactoryGirl.create(:item, feed: @feed)
+        expect {
+          post :mark_all_read, {:id => @feed}, valid_session
+        }.to change(ReadItem, :count).by(1)
+      end
+    end
+  end
+
+
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested feed" do

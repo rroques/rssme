@@ -5,6 +5,7 @@ Rssme::Application.routes.draw do
   end
   resources :read_items, only: :create
   resources :feeds
+  post 'feeds/:id/markAllRead', to: 'feeds#mark_all_read' 
 
   root :to => 'feeds#index'
 

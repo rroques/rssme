@@ -1,33 +1,30 @@
 <div class="feedItems">
   <% if @feed.items.empty? %>
-    There are no items to display. 
+  <div class="noFeedToDisplay">There are no items to display. </div>
   <% else %>
+  <div class="feedActionButtonWrapper">
+    <%= link_to "Mark all as read", {controller: "feeds", action: "mark_all_read", id: @feed}, { :remote => true, :method => 'POST'} %>
+    <%= link_to 'Edit', edit_feed_path(@feed) %> 
+    <%= link_to 'Delete', @feed, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  </div>
   <% @feed.items_to_show.each do |item| %>
   <article class="feedItem <%= item_class(@feed, item) %>" id="feedItem_<%= item.id %>">
     <header class="feedItemName">
       <a href="<%= item_link(item) %>" target="_blank" class="viewOriginal"><%= item.title %></a>
       <span class="pubDate"><%= distance_of_time_in_words(item_pub_date(item), Time.now) %> ago</span>
     </header>
-    <div class="feedContent hidey">
 
-    </div>
-
-    <script>
+    <script type="text/javascript">
 
     // TODO should be one script per page and analyze bubbled events but that will do for the moment
 
     $('#feedItem_<%= item.id %>').click(function(){
       var article = $(this);
-      article.find('.feedContent').toggle(0);
-      $.ajax({
-        type: 'GET',
-        url: '<%= item_path(item.id ) %>',
-        async: true
-      });
       if (!article.is('.read')) {
         $.ajax({
           type: 'POST',
-          url: '<%= item_read_items_path(item.id ) %>',
+          url: '<%= read_items_path %>',
           data: { 'read_item[item_id]' : '<%= item.id %>', 'read_item[feed_id]': '<%= @feed.id %>'},
           async: true,
           success: function(){ 

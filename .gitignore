@@ -23,3 +23,5 @@ public/system
 rerun.txt
 tags
 vendor/bundler_gems
+backup.postgres
+dump.rdb

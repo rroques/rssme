@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
 
   before_filter :authorize
 
-  before_filter :find_feed_for_current_user,   only: [:destroy, :edit, :update, :show]
+  before_filter :find_feed_for_current_user,   only: [:destroy, :edit, :update, :show, :mark_all_read]
 
   
   # GET /feeds
@@ -57,6 +57,19 @@ class FeedsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def mark_all_read
+    read_item_ids = @feed.read_items.map(&:item_id)
+    @feed.items.each do |e|
+      if not read_item_ids.include? e.id 
+        ReadItem.new({:feed_id => @feed.id, :item_id => e.id}).save
+      end  
+    end 
+    respond_to do |format|
+      format.js { render 'show'}
+      format.json { render 'show'}
     end
   end
 

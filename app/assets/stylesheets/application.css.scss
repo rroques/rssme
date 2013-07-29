@@ -114,12 +114,14 @@ input[type="submit"] {
   @include button(simple, #38ab2c);
 }
 
-.addFeed a {
-  margin: $spacing;
+.feedActionButtonWrapper a {
   @include rss-button(#d14836);
+  margin: $spacing 0 $spacing $spacing;
 }
 
-
+.headerButtonContainer {
+  background-color: #efefef;
+}
 
 a {
   text-decoration: none;
@@ -177,32 +179,41 @@ a {
   @include outer-container;
   #feedNames {
     @include span-columns(3);
+    margin-right: 0;
+    border-right: 5px solid #0081C4;
   }
   #feedContainer {
     @include span-columns(9);
   }
 }
 
+.noFeedToDisplay {
+  margin: 10px;
+}
+
 .feedName {
   padding: $spacing;
   border-left: 10px solid #bbb;
-  a, a:visited, a:hover, a:active {
+  color: #888;
+  &:hover {
+    border-left: 10px solid #0081C4;
+  }
+  a, a:visited, a:active {
     color: #888;
     text-decoration: none;
   }
   a:hover {
+    color: #888;
     text-decoration: underline;
   }
   &.selected {
-    border-left: 15px solid #0081C4;
+    border-right: 15px solid #0081C4;
+    border-left: 0;
+    text-align: right;
     .linkToFeed {
       color: #0081C4;
-
       font-weight: bold;
     }
-  }
-  .feedActions {
-    display: none;
   }
 }
 
