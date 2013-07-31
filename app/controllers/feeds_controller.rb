@@ -8,7 +8,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = current_user.feeds.all
+    @feeds = current_user.feeds.order("name ASC").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,6 +36,7 @@ class FeedsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @feed }
+      format.js
     end
   end
 

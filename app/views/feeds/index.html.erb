@@ -13,9 +13,7 @@
       <% @feeds.each do |feed| %>
         <div class="feedName">
           <input type="hidden" class="feedID" value="<%= feed.id %>">
-          <%= link_to feed.name, feed, :remote => true, :class => 'linkToFeed' %>
-          <%= number_unread_items(feed)%>
-          
+          <%= link_to feed.name_unread_items, feed, :remote => true, :class => 'linkToFeed' %>
         </div>
       <% end %>
     </div>

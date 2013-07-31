@@ -18,4 +18,15 @@ class Feed < ActiveRecord::Base
     items.order('pub_date DESC')
   end  
 
+  def name_unread_items
+    "#{name} #{number_unread_items}"
+  end
+
+  private
+
+  def number_unread_items
+    unread_cound = items.size - read_items.size
+    if unread_cound > 0 then "(#{unread_cound})" else "" end
+  end
+
 end
