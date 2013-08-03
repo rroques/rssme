@@ -15,3 +15,9 @@ def login
   page.should have_content 'Sign out'
   find('#current_user').should have_content(user.email)
 end
+
+def logout
+  page.should have_content 'Sign out'
+  click_link 'Sign out'
+  page.should have_content 'Sign in'
+end

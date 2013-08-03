@@ -1,0 +1,7 @@
+$('#anchor').html("<%= escape_javascript(render 'form') %>").dialog({
+      autoOpen: true,
+      modal: true,
+      width: 600,
+      title: 'New feed',
+      close: function(){ $('#dialog-form').remove()}
+});

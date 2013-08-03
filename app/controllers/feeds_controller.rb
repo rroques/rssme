@@ -8,7 +8,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = current_user.feeds.order("name ASC").all
+    @feeds = current_user.feeds.order("LOWER(name) ASC").all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,36 +1,47 @@
 require 'spec_helper'
+require 'clearance/testing'
 
 
-describe "Feeds" do
+describe "CRUD Feeds", :js => true do
   
   before(:each) do
     login
   end  
 
-  describe "Home page" do
-    
-    it "should list all feeds, initially none" do
-      visit feeds_url
-      page.should_not have_selector('table.feedList tbody tr')
-      page.find_link('Add a new Feed').visible?.should be_true
-    end
-
-  end
-
   describe "Add a feed" do
-    
     include FeedHelpers
 
-    it "should list all feeds, initially none" do
-      visit feeds_url
-      page.should_not have_selector('table.feedList tbody tr')
-      click_link('Add a new Feed')
-      current_path.should == new_feed_path
-      create_feed('my feed', 'http://domain.com/file.rss')
-      current_path.should == feeds_path
-      # page.should have_content('Could not load the feed items, please check the url.')
+    it "should increase the number of feeds by one" do
+      expect {
+        create_feed('my feed', 'http://domain.com/file.rss')
+      }.to change(Feed, :count).by(1)
     end
+  end
 
+  describe "Delete a feed" do
+    include FeedHelpers
+
+    it "should decrease the number of feeds by one" do
+      create_feed('my feed', 'http://domain.com/file.rss')
+      expect {
+        click_link('my feed')
+        find_link('Delete').click()
+      }.to change(Feed, :count).by(-1)
+    end
+  end
+
+  describe "Edit a feed" do
+    include FeedHelpers
+
+    it "should change its name" do
+      create_feed('my feed', 'http://domain.com/file.rss')
+      update_feed('my feed', 'new name', 'http://domain.com/file.rss')
+      page.should have_link 'new name'
+      expect {
+        click_link('new name')
+        find_link('Delete').click()
+      }.to change(Feed, :count).by(-1)
+    end
   end
 
 

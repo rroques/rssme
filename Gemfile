@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -21,6 +21,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails' 
+  gem "rails-bootstrap-helpers"
+  gem 'bootstrap-sass', '~> 2.3.2.1'
 end
 
 gem 'jquery-rails'
@@ -56,6 +58,8 @@ end
 group :test do
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'poltergeist'
+  gem 'launchy'
   gem 'factory_girl_rails'
   gem 'bourne'
   gem 'database_cleaner'

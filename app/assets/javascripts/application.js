@@ -19,5 +19,7 @@
 //= require js-routes
 //= require_directory ./feeds
 //= require_directory ./google_reader_imports
+//= require bootstrap
+
 
 window.Inline = window.Inline || {};

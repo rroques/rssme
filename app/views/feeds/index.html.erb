@@ -1,10 +1,7 @@
 <div class="pageHeader">
   <h1>My feeds</h1>
-</div>
-<div class="headerButtonContainer">
-  <div class="feedActionButtonWrapper">
-    <%= link_to 'Add a new Feed', new_feed_path %>
-  </div>
+  <span class="headerActionButtonWrapper"><%= link_to '+', new_feed_path, {:remote => true, :id => 'addFeed',
+  "data-toggle" => "tooltip", "data-placement" => "right", :title =>"", "data-original-title" => "Subscribe to a new feed" }%></span>
 </div>
 
 <div class="feedsContainer">
@@ -13,7 +10,7 @@
       <% @feeds.each do |feed| %>
         <div class="feedName">
           <input type="hidden" class="feedID" value="<%= feed.id %>">
-          <%= link_to feed.name_unread_items, feed, :remote => true, :class => 'linkToFeed' %>
+          <%= link_to feed.name_unread_items.html_safe, feed, :remote => true, :class => 'linkToFeed' %>
         </div>
       <% end %>
     </div>

@@ -26,7 +26,7 @@ class Feed < ActiveRecord::Base
 
   def number_unread_items
     unread_cound = items.size - read_items.size
-    if unread_cound > 0 then "(#{unread_cound})" else "" end
+    if unread_cound > 0 then "<span class='badge'>#{unread_cound}</span>" else "" end
   end
 
 end

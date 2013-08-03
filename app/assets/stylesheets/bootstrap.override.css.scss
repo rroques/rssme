@@ -1,0 +1,21 @@
+h1 { 
+  line-height: inherit;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+  height: auto;
+  padding: 8px;
+   width: 100%;
+}
+
+form {
+  padding: 0;
+  margin: 0;
+
+}
+
+.alert {
+  position: absolute;
+  left: 40%;
+  top: 15px;
+}
