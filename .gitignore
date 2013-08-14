@@ -25,3 +25,5 @@ tags
 vendor/bundler_gems
 backup.postgres
 dump.rdb
+.idea/*
+
