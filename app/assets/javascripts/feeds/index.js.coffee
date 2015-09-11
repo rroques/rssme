@@ -5,7 +5,7 @@ window.RSSME.feeds.index = ->
     feedNames.removeClass('selected')
     $(this).addClass('selected');
     
-  feeds = feedNames.find('.linkToFeed:first').click()
+  #feeds = $('#feedNames').find('.linkToFeed').first().click()
 
   $('#addFeed').tooltip()
 
