@@ -20,7 +20,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-rails' 
+  gem 'jquery-rails'
   gem "rails-bootstrap-helpers"
   gem 'bootstrap-sass', '~> 2.3.2.1'
 end
@@ -39,7 +39,7 @@ gem 'spinjs-rails'
 gem 'js-routes'
 gem 'nokogiri'
 
-gem 'resque', :require => 'resque/server' 
+gem 'resque', :require => 'resque/server'
 gem 'resque-scheduler', :require => 'resque_scheduler'
 
 gem 'underscore-rails'
@@ -56,6 +56,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'poltergeist'
