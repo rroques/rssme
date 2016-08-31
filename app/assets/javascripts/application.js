@@ -22,3 +22,6 @@
 
 
 window.Inline = window.Inline || {};
+window.RSSME = window.RSSME || {};
+window.RSSME.feeds = window.RSSME.feeds || {};
+window.RSSME.google_reader_imports = window.RSSME.google_reader_imports || {};
